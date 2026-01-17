@@ -36,5 +36,41 @@ public class App {
          * 
          */
         System.out.println("Hello, World!");
+        // Create the nodes
+        ListNode head = new ListNode(3);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(0);
+        ListNode node4 = new ListNode(-4);
+
+        // Link the nodes to form the linked list
+        head.next = node2; // 3 -> 2
+        node2.next = node3; // 2 -> 0
+        node3.next = node4; // 0 -> -4
+        node4.next = node2; // -4 -> 2 (cycle back to the second node)
+
+        /*
+         * System.out.println("The original given linked list is: ");
+         * printList(head);
+         */
+
+        Solution solution = new Solution();
+        boolean result = solution.hasCycle(head);
+        System.out.println("Does the given linked list has cycles-->" + result);
+
+    }
+
+    /**
+     * Cannot use it if the linked list has cycles as the data will go on to be
+     * prnted indefinitely.
+     * 
+     * @param head
+     */
+    public static void printList(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " ");
+            current = current.next;
+        }
+        System.out.println();
     }
 }
